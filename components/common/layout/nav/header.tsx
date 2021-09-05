@@ -1,0 +1,1 @@
+export { Nav as Header } from "./comps/nav"
