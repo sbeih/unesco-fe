@@ -15,7 +15,7 @@ export const Card: React.FC<ICardProps> = ({
   cityName,
 }) => {
   return (
-    <Box>
+    <Box width="95%">
       <VStack spacing={4} alignItems="flex-start">
         <Box>
           <Img src={imageSrc} alt={title} />

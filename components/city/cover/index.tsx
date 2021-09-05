@@ -44,7 +44,7 @@ export const Cover: React.FC<ICoverProps> = ({
           width={"100vw"}
           height={"100vw"}
         />
-        <Img src="/images/citycover.png" zIndex={-2} />
+        <Img src="/images/citycover.png" zIndex={-2} width="100%" height="770px"/>
       </Box>
       <VStack
         spacing={"42px"}

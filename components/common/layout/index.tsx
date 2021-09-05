@@ -4,7 +4,7 @@ import { DESIGN_WIDTH } from "constants/";
 
 export const Layout: React.FC = ({ children }) => {
   return (
-    <Box position="relative">
+    <Box position="relative" overflow="hidden">
       <Box maxW={DESIGN_WIDTH} m="auto">
         <Header />
         {children}
