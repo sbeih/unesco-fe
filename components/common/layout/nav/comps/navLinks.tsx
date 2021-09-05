@@ -1,4 +1,4 @@
-import { Link, Text } from "@chakra-ui/react";
+import { Link, Text, Box } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { SearchIcon } from "@/icons/index";
 import { FormattedMessage } from "react-intl";
@@ -6,7 +6,9 @@ import { FormattedMessage } from "react-intl";
 export const NavLinks: React.FC = () => {
   return (
     <>
-      <SearchIcon />
+      <Box mt={[10, 0]}>
+        <SearchIcon />
+      </Box>
       {links.map((link, i) => (
         <NavLink key={i} label={link.label} href={link.href} />
       ))}
@@ -20,7 +22,7 @@ const NavLink: React.FC<INavLinkProps> = ({ label, href }) => {
   return (
     <Link as={NextLink} href={href}>
       <a>
-        <Text fontSize={"lg"} fontWeight={"400"}>
+        <Text fontSize="md" fontWeight="400">
           <FormattedMessage id={label} />
         </Text>
       </a>
@@ -30,7 +32,7 @@ const NavLink: React.FC<INavLinkProps> = ({ label, href }) => {
 
 type NavLinkType = {
   label: string;
-  href: string;
+  href?: string;
 };
 
 const links: NavLinkType[] = [

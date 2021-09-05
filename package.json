@@ -1,31 +1,31 @@
 {
-  "name": "unesco-fe",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@chakra-ui/react": "^1.6.7",
-    "@emotion/react": "11",
-    "@emotion/styled": "11",
-    "@fontsource/almarai": "^4.5.0",
-    "framer-motion": "4",
-    "next": "11.1.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-draggable": "^4.4.4",
-    "react-intl": "^5.20.10",
-    "react-use": "^17.2.4"
-  },
-  "devDependencies": {
-    "@types/react": "17.0.19",
-    "eslint": "7.32.0",
-    "eslint-config-next": "11.1.0",
-    "prettier": "2.3.2",
-    "typescript": "4.4.2"
-  }
+    "name": "unesco-fe",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@chakra-ui/react": "^1.6.7",
+        "@emotion/react": "11",
+        "@emotion/styled": "11",
+        "@fontsource/almarai": "^4.5.0",
+        "framer-motion": "4",
+        "next": "11.1.0",
+        "react": "17.0.2",
+        "react-dom": "17.0.2",
+        "react-draggable": "^4.4.4",
+        "react-intl": "^5.20.10",
+        "react-use": "^17.2.4"
+    },
+    "devDependencies": {
+        "@types/react": "17.0.19",
+        "eslint": "7.32.0",
+        "eslint-config-next": "11.1.0",
+        "prettier": "2.3.2",
+        "typescript": "4.4.2"
+    }
 }

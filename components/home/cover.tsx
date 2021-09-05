@@ -4,9 +4,9 @@ import { FormattedMessage } from "react-intl";
 
 export const Cover: React.FC = () => {
   return (
-    <Flex width="100%">
+    <Flex width="100%" height="726px">
       <Content />
-      <GradiantDivider />
+      {/* <GradiantDivider /> */}
       {/* <MapImage /> */}
     </Flex>
   );
@@ -14,13 +14,24 @@ export const Cover: React.FC = () => {
 
 const Content: React.FC = () => {
   return (
-    <Box width="38%" zIndex={1} bgColor="brand.500">
+    <Box width={{ lg: "44%", md: "100%" }} zIndex={1} bgColor="brand.500">
       <Flex height="835px" alignItems="center">
-        <VStack spacing={"42px"} align="flex-start">
-          <Heading fontSize="3xl" as="h1" fontWeight="normal">
+        <VStack spacing="42px" align={["center", "flex-start"]}>
+          <Heading
+            fontSize="3xl"
+            as="h1"
+            fontWeight="normal"
+            textAlign={["center", "start"]}
+          >
             <FormattedMessage id="home.cover.content.title" />
           </Heading>
-          <Heading as="h2" fontSize="xl" fontWeight="light">
+          <Heading
+            as="h2"
+            fontSize="xl"
+            fontWeight="light"
+            lineHeight="59px"
+            textAlign={["center", "start"]}
+          >
             <FormattedMessage id="home.cover.content.description" />
           </Heading>
           <Button variant="primary" size="lg">
@@ -48,12 +59,7 @@ const MapImage: React.FC = () => {
     <Box width={"2340px"} position="absolute">
       <Draggable axis="x" bounds="parent">
         <Box left="-250px">
-          <Img
-            src="/images/map.png"
-            width="2040px"
-            height="1115px"
-            alt="map"
-          />
+          <Img src="/images/map.png" width="2040px" height="1115px" alt="map" />
         </Box>
       </Draggable>
     </Box>

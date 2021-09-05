@@ -28,14 +28,15 @@ const colors = {
   },
 };
 
-const styles = {
+const styles = (locale: string) => ({
   global: {
     body: {
+      direction: locale === "ar" ? "rtl" : "ltr",
       background: "brand.500",
       color: "brand.100",
     },
   },
-};
+});
 
 const direction = (locale: string) => (locale === "ar" ? "rtl" : "ltr");
 
@@ -65,20 +66,21 @@ const components = {
       },
     },
   },
+  Link: {
+    styles: {
+      cursor: "pointer",
+    },
+  },
 };
 
 const themeOverrides = (locale: string) => ({
   fonts,
   colors,
-  styles,
   fontSizes,
   components,
+  styles: styles(locale),
   direction: direction(locale),
 });
 
-const customTheme = (locale: string) => {
-  console.log({ tO: themeOverrides(locale) });
-  return extendTheme(themeOverrides(locale));
-};
-
+const customTheme = (locale: string) => extendTheme(themeOverrides(locale));
 export default customTheme;

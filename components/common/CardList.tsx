@@ -12,13 +12,21 @@ export const CardList: React.FC<ICardListProps> = ({
   cards,
   title,
   subtitle,
-  columns = 3
+  columns = 3,
 }) => {
   return (
-    <VStack spacing={9} alignItems="flex-start">
-      {title && <Text fontSize="2xl" fontWeight="bold">{title}</Text>}
-      {subtitle && <Text fontSize="xl" fontWeight="lgiht">{subtitle}</Text>}
-      <SimpleGrid columns={columns} spacing={10}>
+    <VStack spacing={9} alignItems={["center", "flex-start"]}>
+      {title && (
+        <Text fontSize="2xl" fontWeight="bold">
+          {title}
+        </Text>
+      )}
+      {subtitle && (
+        <Text fontSize="xl" fontWeight="light">
+          {subtitle}
+        </Text>
+      )}
+      <SimpleGrid columns={{ lg: columns, md: 1 }} spacing={10}>
         {cards.map((card, i) => (
           <Card key={i} {...card} />
         ))}

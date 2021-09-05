@@ -23,6 +23,8 @@ export const relatedTopics = [
       "يعرف التطريز بأنه إحد الحرف اليدوية القديمة التي انتشرت منذ زمن بعيد بين ربات البيوت",
     cityName: "رام الله",
     imageSrc: "/images/card1.png",
+    href: "/topic/1",
+    citylink: "/city/1",
   },
   {
     title: "التطريز الاسيسي",
@@ -30,6 +32,8 @@ export const relatedTopics = [
       "يعرف التطريز بأنه إحد الحرف اليدوية القديمة التي انتشرت منذ زمن بعيد بين ربات البيوت",
     cityName: "رام الله",
     imageSrc: "/images/card1.png",
+    href: "/topic/1",
+    citylink: "/city/1",
   },
   {
     title: "التطريز الاسيسي",
@@ -37,5 +41,7 @@ export const relatedTopics = [
       "يعرف التطريز بأنه إحد الحرف اليدوية القديمة التي انتشرت منذ زمن بعيد بين ربات البيوت",
     cityName: "رام الله",
     imageSrc: "/images/card1.png",
+    href: "/topic/1",
+    citylink: "/city/1",
   },
 ];

@@ -19,7 +19,7 @@ export const Cover: React.FC<ICoverProps> = ({
   soundCount,
 }) => {
   return (
-    <Box height="750px">
+    <Box height={["100%", "750px"]}>
       <Box
         zIndex={-1}
         position="absolute"
@@ -50,13 +50,18 @@ export const Cover: React.FC<ICoverProps> = ({
         spacing={"42px"}
         width="100%"
         height="100%"
-        alignItems="flex-start"
+        alignItems={["center", "flex-start"]}
         justifyContent="center"
       >
         <Heading as="h1" fontSize="3xl" fontWeight="normal">
           {cityName}
         </Heading>
-        <Text fontSize="xl" fontWeight="light" width="68%">
+        <Text
+          fontSize="xl"
+          fontWeight="light"
+          width="68%"
+          textAlign={["center", "start"]}
+        >
           {cityDescription}
         </Text>
         <Box width="100%">

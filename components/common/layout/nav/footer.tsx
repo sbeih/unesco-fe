@@ -5,7 +5,7 @@ export const Footer: React.FC = () => {
   return (
     <footer>
       <Center
-        height="292px"
+        height={["fit-content", "292px"]}
         width="100vw"
         bgColor="brand.100"
         position="absolute"

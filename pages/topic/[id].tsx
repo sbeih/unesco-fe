@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import { PageSEO } from "@/components/common/PageSEO";
 import { Box, Heading, Img, Text, VStack } from "@chakra-ui/react";
 import { TopicLayout } from "@/components/topic";
 import { CardList } from "@/components/common/CardList";
@@ -30,7 +31,14 @@ const TopicPage: NextPage<ITopicPageProps> = ({
 }) => {
   return (
     <Box width="100%">
-      <Heading as="h1" fontSize="3xl" fontWeight="normal" my="48px">
+      <PageSEO title={title} description={title} />
+      <Heading
+        as="h1"
+        fontSize="3xl"
+        fontWeight="normal"
+        my="48px"
+        w="fit-content"
+      >
         {title}
       </Heading>
       <TopicLayout
@@ -51,7 +59,7 @@ const TopicPage: NextPage<ITopicPageProps> = ({
 const Left: React.FC<any> = ({ cards }) => (
   <Box width="100%">
     <Img src="/images/topic2.png" height="679px" />
-    <Text fontSize="3xl" fontWeight="normal" mt="50px">
+    <Text fontSize="3xl" fontWeight="normal" my="50px">
       <FormattedMessage id="topic.related-topics" />
     </Text>
     <CardList cards={cards} columns={1} />

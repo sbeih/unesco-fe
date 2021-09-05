@@ -1,4 +1,4 @@
-import { Flex, HStack, VStack, Text } from "@chakra-ui/react";
+import { Flex, HStack, VStack, Text, Stack } from "@chakra-ui/react";
 import { useIntl } from "react-intl";
 import { VideoIcon, SoundIcon, PhotoIcon, ArticleIcon } from "@/icons/index";
 
@@ -16,9 +16,11 @@ export const DataCountSection: React.FC<IDataCountSectionProps> = ({
   soundCount,
 }) => {
   const { formatMessage } = useIntl();
-  
+
   return (
-    <Flex
+    <Stack
+      direction={["column", "row"]}
+      spacing={10}
       justifyContent="space-between"
       alignItems="center"
       width="100%"
@@ -44,7 +46,7 @@ export const DataCountSection: React.FC<IDataCountSectionProps> = ({
         title={formatMessage({ id: "city.cover.count.sound" })}
         count={soundCount}
       />
-    </Flex>
+    </Stack>
   );
 };
 

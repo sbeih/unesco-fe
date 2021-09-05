@@ -3,7 +3,7 @@ import { Box } from "@chakra-ui/react";
 import { CityCover } from "@/components/city";
 import { categories, ICategory } from "../../mocks/city";
 import { CardList } from "@/components/common/CardList";
-
+import { PageSEO } from "@/components/common/PageSEO";
 interface ICityPageProps {
   cityName: string;
   cityDescription: string;
@@ -11,6 +11,7 @@ interface ICityPageProps {
   videoCount: string;
   articleCount: string;
   soundCount: string;
+  cityImage: string;
   categories: ICategory[];
 }
 
@@ -25,6 +26,7 @@ const CityPage: NextPage<ICityPageProps> = ({
 }) => {
   return (
     <Box>
+      <PageSEO title={cityName} description={cityDescription} />
       <CityCover
         cityName={cityName}
         cityDescription={cityDescription}
@@ -33,14 +35,16 @@ const CityPage: NextPage<ICityPageProps> = ({
         articleCount={articleCount}
         soundCount={soundCount}
       />
-      {categories.map((cat, i) => (
-        <CardList
-          key={i}
-          cards={cat.topics}
-          title={cat.title}
-          subtitle={cat.subtitle}
-        />
-      ))}
+      <Box mt={[15, 7]}>
+        {categories.map((cat, i) => (
+          <CardList
+            key={i}
+            cards={cat.topics}
+            title={cat.title}
+            subtitle={cat.subtitle}
+          />
+        ))}
+      </Box>
     </Box>
   );
 };
@@ -59,6 +63,7 @@ export const getServerSideProps = async (ctx: any) => {
       articleCount: "12,039",
       soundCount: "12,039",
       categories,
+      cityImage: "/images/citycover.png",
     },
   };
 };

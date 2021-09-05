@@ -1,4 +1,5 @@
-import { VStack, Box, Flex, Text, Img } from "@chakra-ui/react";
+import { VStack, Box, Flex, Text, Img, Link } from "@chakra-ui/react";
+import NextLink from "next/link";
 import { LocationIcon } from "@/icons/index";
 
 export interface ICardProps {
@@ -6,6 +7,8 @@ export interface ICardProps {
   title: string;
   subtitle: string;
   cityName: string;
+  href?: string;
+  citylink?: string;
 }
 
 export const Card: React.FC<ICardProps> = ({
@@ -13,26 +16,36 @@ export const Card: React.FC<ICardProps> = ({
   title,
   subtitle,
   cityName,
+  href,
+  citylink,
 }) => {
   return (
-    <Box>
-      <VStack spacing={4} alignItems="flex-start">
-        <Box>
-          <Img src={imageSrc} alt={title} />
-        </Box>
-        <Text fontSize="xl" fontWeight="bold">
-          {title}
-        </Text>
-        <Text fontSize="md" fontWeight="light">
-          {subtitle}
-        </Text>
-      </VStack>
-      <Flex width="100%" justifyContent="flex-end" mt={14}>
-        <LocationIcon />
-        <Text fontSize="sm" fontWeight="bold" mr={3}>
-          {cityName}
-        </Text>
-      </Flex>
-    </Box>
+    <Link as={NextLink} href={href}>
+      <Box>
+        <VStack
+          spacing={4}
+          alignItems={["center", "flex-start"]}
+          cursor="pointer"
+        >
+          <Box>
+            <Img src={imageSrc} alt={title} height="328px" />
+          </Box>
+          <Text fontSize="xl" fontWeight="bold">
+            {title}
+          </Text>
+          <Text fontSize="md" fontWeight="light">
+            {subtitle}
+          </Text>
+        </VStack>
+        <Link as={NextLink} href={citylink}>
+          <Flex width="100%" justifyContent="flex-end" mt={14} cursor="pointer">
+            <LocationIcon />
+            <Text fontSize="sm" fontWeight="bold" ms={3}>
+              {cityName}
+            </Text>
+          </Flex>
+        </Link>
+      </Box>
+    </Link>
   );
 };
