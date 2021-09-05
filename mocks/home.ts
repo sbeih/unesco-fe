@@ -1,14 +1,16 @@
+export interface ITopicType {
+  title: string;
+  subtitle: string;
+  cityName: string;
+  imageSrc: string;
+  href: string;
+  citylink: string;
+}
+
 export interface ICategory {
   title: string;
   subtitle: string;
-  topics: {
-    title: string;
-    subtitle: string;
-    cityName: string;
-    imageSrc: string;
-    href: string;
-    citylink: string;
-  }[];
+  topics: ITopicType[];
 }
 
 export const categories: ICategory[] = [

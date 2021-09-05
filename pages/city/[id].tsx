@@ -35,7 +35,7 @@ const CityPage: NextPage<ICityPageProps> = ({
         articleCount={articleCount}
         soundCount={soundCount}
       />
-      <Box mt={[15, 7]}>
+      <Box mt={[12, 7]}>
         {categories.map((cat, i) => (
           <CardList
             key={i}
@@ -48,7 +48,8 @@ const CityPage: NextPage<ICityPageProps> = ({
     </Box>
   );
 };
-// TODO: use getStaticProps with getStaticPaths
+
+// TODO: when integrating with BE, use getStaticProps with getStaticPaths
 export const getServerSideProps = async (ctx: any) => {
   return {
     // -- mocked -- //

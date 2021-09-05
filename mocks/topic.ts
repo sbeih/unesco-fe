@@ -1,4 +1,8 @@
+export type { ICategory, ITopicType } from "./home";
+
 export const title = "التطريز الاسيسي";
+export const image1Src = "/images/topic1.png";
+export const image2Src = "/images/topic2.png";
 export const firstParagraph = `.ﻖﻴﺒﻄﺘﻟا ﺎﻫﺪﻟﻮﻳ ﻰﺘﻟا فوﺮﺤﻟا دﺪﻋ ةدﺎﻳز ﻰﻟإ ﺔﻓﺎﺿإ ىﺮﺧﺄﻟا صﻮﺼﻨﻟا ﻦﻣ ﺪﻳﺪﻌﻟا وأ ﺺﻨﻟا اﺬﻫ ﻞﺜﻣ ﺪﻟﻮﺗ نأ ﻚﻨﻜﻤﻳ ﺚﻴﺣ ،ﻰﺑﺮﻌﻟا ﺺﻨﻟا ﺪﻟﻮﻣ ﻦﻣ ﺺﻨﻟا اﺬﻫ ﺪﻴﻟﻮﺗ ﻢﺗ ﺪﻘﻟ ،ﺔﺣﺎﺴﻤﻟا ﺲﻔﻧ ﻲﻓ لﺪﺒﺘﺴﻳ نأ ﻦﻜﻤﻳ ﺺﻨﻟ لﺎﺜﻣ ﻮﻫ ﺺﻨﻟا اﺬﻫ
 .ﻊﻗﻮﻤﻟا ﻢﻴﻤﺼﺘﻟ ﺔﻴﻘﻴﻘﺣ ةرﻮﺻ ﻰﻠﻋ ﻊﻠﻄﻳ نأ نﺎﻴﺣﺄﻟا ﻦﻣ ﺮﻴﺜﻛ ﻰﻓ ﻞﻴﻤﻌﻟا جﺎﺘﺤﻳ ﺚﻴﺣ 
 

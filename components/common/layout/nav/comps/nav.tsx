@@ -21,15 +21,21 @@ export const Nav: React.FC<IHeaderProps> = ({ inverted }) => {
         alignItems="center"
         justifyContent="space-between"
       >
-        <Logo inverted={inverted} />
-        <Button
-          display={["block", "none"]}
-          onClick={() => setIsOpen(!isOpen)}
-          variant="ghost"
-          size="lg"
-        >
-          ☰
-        </Button>
+        <Flex>
+          <Logo inverted={inverted} />
+          <Button
+            display={["block", "none"]}
+            onClick={() => setIsOpen(!isOpen)}
+            variant="outline"
+            borderRadius="30px"
+            width="fit-content"
+            size="lg"
+            fontSize="xl"
+            mt={5}
+          >
+            ☰
+          </Button>
+        </Flex>
         <Box display={[isOpen ? "block" : "none", "block"]}>
           <Flex alignItems="center">
             <Stack

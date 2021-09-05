@@ -61,7 +61,7 @@ const DataCount: React.FC<IDataCountProps> = ({ icon: Icon, count, title }) => {
     <HStack spacing="28px">
       <Icon />
       <VStack spacing={1} alignItems="flex-start">
-        <Text fontSize="4xl" fontWeight="normal" lineHeight="none">
+        <Text fontSize={["2xl", "4xl"]} fontWeight="normal" lineHeight="none">
           {count}
         </Text>
         <Text fontSize="xl" fontWeight="light" lineHeight="none">

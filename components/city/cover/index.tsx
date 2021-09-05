@@ -19,7 +19,7 @@ export const Cover: React.FC<ICoverProps> = ({
   soundCount,
 }) => {
   return (
-    <Box height={["100%", "750px"]}>
+    <Box height={["100%", "750px"]} mt={[12, 0]}>
       <Box
         zIndex={-1}
         position="absolute"
@@ -44,10 +44,15 @@ export const Cover: React.FC<ICoverProps> = ({
           width={"100vw"}
           height={"100vw"}
         />
-        <Img src="/images/citycover.png" zIndex={-2} width="100%" height="770px"/>
+        <Img
+          src="/images/citycover.png"
+          zIndex={-2}
+          width="100%"
+          height={["170px", "770px"]}
+        />
       </Box>
       <VStack
-        spacing={"42px"}
+        spacing="42px"
         width="100%"
         height="100%"
         alignItems={["center", "flex-start"]}

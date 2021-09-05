@@ -5,10 +5,7 @@ import { DESIGN_WIDTH, MD_DESIGN_WIDTH } from "constants/";
 export const Layout: React.FC = ({ children }) => {
   return (
     <Box position="relative" overflowX="hidden">
-      <Box
-        maxW={{ lg: DESIGN_WIDTH, md: MD_DESIGN_WIDTH }}
-        m={{ lg: "auto", md: 0 }}
-      >
+      <Box maxW={[MD_DESIGN_WIDTH, DESIGN_WIDTH]} m={[5, "auto"]}>
         <Header />
         {children}
         <Footer />

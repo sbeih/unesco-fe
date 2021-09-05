@@ -7,8 +7,8 @@ export interface ICardProps {
   title: string;
   subtitle: string;
   cityName: string;
-  href?: string;
-  citylink?: string;
+  href: string;
+  citylink: string;
 }
 
 export const Card: React.FC<ICardProps> = ({

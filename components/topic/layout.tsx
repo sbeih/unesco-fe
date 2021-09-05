@@ -1,8 +1,4 @@
 import { Stack, Box } from "@chakra-ui/react";
-// TODO: convert to comosite component
-// TODO: RTL left/right issues - whole app
-// TODO: spacing/sizes numbers in theme - not px
-
 interface ILayout {
   left: React.ReactNode;
   right: React.ReactNode;
