@@ -1,14 +1,13 @@
-import { Box, Flex, VStack, Heading, Button } from "@chakra-ui/react";
+import { Box, Flex, VStack, Heading, Button, Img } from "@chakra-ui/react";
 import Draggable from "react-draggable";
 import { FormattedMessage } from "react-intl";
-import Image from "next/image";
 
 export const Cover: React.FC = () => {
   return (
     <Flex width="100%">
       <Content />
       <GradiantDivider />
-      <MapImage />
+      {/* <MapImage /> */}
     </Flex>
   );
 };
@@ -49,7 +48,7 @@ const MapImage: React.FC = () => {
     <Box width={"2340px"} position="absolute">
       <Draggable axis="x" bounds="parent">
         <Box left="-250px">
-          <Image
+          <Img
             src="/images/map.png"
             width="2040px"
             height="1115px"

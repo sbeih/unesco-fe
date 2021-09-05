@@ -1,7 +1,9 @@
 import { extendTheme } from "@chakra-ui/react";
 
-const font = {
-  // body: "Almarai",
+const fonts = {
+  body: "Almarai",
+  heading: "Almarai",
+  mono: "Almarai",
 };
 
 const fontSizes = {
@@ -26,15 +28,16 @@ const colors = {
   },
 };
 
-const styles = (locale: string) => ({
+const styles = {
   global: {
     body: {
-      direction: locale === "ar" ? "rtl" : "ltr",
       background: "brand.500",
       color: "brand.100",
     },
   },
-});
+};
+
+const direction = (locale: string) => (locale === "ar" ? "rtl" : "ltr");
 
 const components = {
   Button: {
@@ -65,13 +68,17 @@ const components = {
 };
 
 const themeOverrides = (locale: string) => ({
-  font,
+  fonts,
   colors,
+  styles,
   fontSizes,
   components,
-  styles: styles(locale),
+  direction: direction(locale),
 });
 
-const customTheme = (locale: string) => extendTheme(themeOverrides(locale));
+const customTheme = (locale: string) => {
+  console.log({ tO: themeOverrides(locale) });
+  return extendTheme(themeOverrides(locale));
+};
 
 export default customTheme;

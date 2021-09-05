@@ -2,66 +2,25 @@ import type { NextPage } from "next";
 import { VStack } from "@chakra-ui/layout";
 import { HomeCover } from "@/components/home/";
 import { CardList } from "@/components/common/CardList";
-import {
-  section1,
-  section2,
-  section3,
-  section4,
-  section5,
-  section6,
-} from "../mocks/home";
+import { categories, ICategory } from "../mocks/home";
 
 interface IHomeProps {
-  section1: any[];
-  section2: any[];
-  section3: any[];
-  section4: any[];
-  section5: any[];
-  section6: any[];
+  categories: ICategory[];
 }
 
-const Home: NextPage<IHomeProps> = ({
-  section1,
-  section2,
-  section3,
-  section4,
-  section5,
-  section6,
-}) => {
+const Home: NextPage<IHomeProps> = ({ categories }) => {
   return (
     <div>
       <HomeCover />
       <VStack spacing={16}>
-        <CardList
-          cards={section1}
-          title="التطريز"
-          subtitle="الفن الشعبي التراثي المتألق"
-        />
-        <CardList
-          cards={section2}
-          title="الدبكة"
-          subtitle="يصطف الراقصون إما على شكل صف أو على شكل قوس او دائرة. يكون الراقصون من الذكور و الاناث,"
-        />
-        <CardList
-          cards={section3}
-          title="الألعاب الحركية"
-          subtitle="الألعاب الشعبية الفلسطينية أحد المظار الثقافية الفلسطينية"
-        />
-        <CardList
-          cards={section4}
-          title="الزيتون"
-          subtitle="موسم قطف الزيتون"
-        />
-        <CardList
-          cards={section5}
-          title="المسخن"
-          subtitle="من اكثر الاطباق أطباق فلسطين الشعبية شهرة المسخن مع الدجاج"
-        />
-        <CardList
-          cards={section6}
-          title="النقش على المعادن"
-          subtitle="الفن الشعبي التراثي المتألق"
-        />
+        {categories.map((cat, i) => (
+          <CardList
+            key={i}
+            cards={cat.topics}
+            title={cat.title}
+            subtitle={cat.subtitle}
+          />
+        ))}
       </VStack>
     </div>
   );
@@ -70,12 +29,8 @@ const Home: NextPage<IHomeProps> = ({
 export const getStaticProps = async () => {
   return {
     props: {
-      section1,
-      section2,
-      section3,
-      section4,
-      section5,
-      section6,
+      // -- mocked -- //
+      categories,
     },
   };
 };

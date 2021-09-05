@@ -5,15 +5,19 @@ import { IntlProvider } from "react-intl";
 import messages_ar from "@/translations/ar.json";
 import messages_en from "@/translations/en.json";
 import { useRouter } from "next/router";
-import customTheme from '@/styles/theme'
+import customTheme from "@/styles/theme";
+import "@fontsource/almarai/300.css";
+import "@fontsource/almarai/400.css";
+import "@fontsource/almarai/700.css";
 
 const messages: any = {
   ar: messages_ar,
-  en: messages_en
-}
+  en: messages_en,
+};
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { locale } = useRouter();
+  console.log({ locale });
   return (
     <ChakraProvider theme={customTheme(locale!)}>
       <IntlProvider locale={locale!} messages={messages[locale!]}>

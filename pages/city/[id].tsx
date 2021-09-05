@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import { Box } from "@chakra-ui/react";
 import { CityCover } from "@/components/city";
-import { section1 } from "../../mocks/city";
+import { categories, ICategory } from "../../mocks/city";
 import { CardList } from "@/components/common/CardList";
 
 interface ICityPageProps {
@@ -11,7 +11,7 @@ interface ICityPageProps {
   videoCount: string;
   articleCount: string;
   soundCount: string;
-  section1: any; // TODO: better mocks
+  categories: ICategory[];
 }
 
 const CityPage: NextPage<ICityPageProps> = ({
@@ -21,15 +21,8 @@ const CityPage: NextPage<ICityPageProps> = ({
   videoCount,
   articleCount,
   soundCount,
+  categories,
 }) => {
-  console.log({
-    cityName,
-    cityDescription,
-    photoCount,
-    videoCount,
-    articleCount,
-    soundCount,
-  });
   return (
     <Box>
       <CityCover
@@ -40,42 +33,21 @@ const CityPage: NextPage<ICityPageProps> = ({
         articleCount={articleCount}
         soundCount={soundCount}
       />
-      <CardList
-          cards={section1}
-          title="التطريز"
-          subtitle="الفن الشعبي التراثي المتألق"
+      {categories.map((cat, i) => (
+        <CardList
+          key={i}
+          cards={cat.topics}
+          title={cat.title}
+          subtitle={cat.subtitle}
         />
-      <CardList
-          cards={section1}
-          title="التطريز"
-          subtitle="الفن الشعبي التراثي المتألق"
-        />
-      <CardList
-          cards={section1}
-          title="التطريز"
-          subtitle="الفن الشعبي التراثي المتألق"
-        />
-      <CardList
-          cards={section1}
-          title="التطريز"
-          subtitle="الفن الشعبي التراثي المتألق"
-        />
-      <CardList
-          cards={section1}
-          title="التطريز"
-          subtitle="الفن الشعبي التراثي المتألق"
-        />
-      <CardList
-          cards={section1}
-          title="التطريز"
-          subtitle="الفن الشعبي التراثي المتألق"
-        />
+      ))}
     </Box>
   );
 };
-
+// TODO: use getStaticProps with getStaticPaths
 export const getServerSideProps = async (ctx: any) => {
   return {
+    // -- mocked -- //
     props: {
       cityName: "مدينة رام الله",
       cityDescription: `مدينة فلسطينية و مركز محافظة رام الله و البيرة. تقع في الضفة الغربية
@@ -86,7 +58,7 @@ export const getServerSideProps = async (ctx: any) => {
       videoCount: "12,039",
       articleCount: "12,039",
       soundCount: "12,039",
-      section1
+      categories,
     },
   };
 };

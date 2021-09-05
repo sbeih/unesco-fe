@@ -82,6 +82,7 @@ const Right: React.FC<any> = ({
 export const getServerSideProps = async () => {
   return {
     props: {
+      // -- mocked -- //
       title,
       firstParagraph,
       secondaryTitle,
