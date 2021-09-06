@@ -1,14 +1,59 @@
-import NextLink from "next/link";
-import { Button, Menu, MenuButton, MenuItem } from "@chakra-ui/react";
+import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
 export const LanguageSwitcher: React.FC = () => {
-  const { locale, asPath, push } = useRouter();
+  const { locale } = useRouter();
+  const currentLanguageLabel = languages.find(
+    (lang) => lang.lang === locale
+  )?.label;
+
   return (
-    <NextLink href={asPath} locale={locale === "ar" ? "en" : "ar"}>
-      <Button variant="white" size="md" color="brand.100">
-        {locale === "ar" ? "English" : "عربي"}
-      </Button>
-    </NextLink>
+    <Menu>
+      <MenuButton as={Button} variant="white" size="md" color="brand.100">
+        {currentLanguageLabel}
+      </MenuButton>
+      <MenuList borderColor="brand.700">
+        {languages.map((lang) => (
+          <LanguageItem key={lang.lang} {...lang} />
+        ))}
+      </MenuList>
+    </Menu>
   );
 };
+
+interface IMenuItemProps {
+  label: string;
+  lang: string;
+  symbol: string;
+}
+
+const LanguageItem: React.FC<IMenuItemProps> = ({ label, lang, symbol }) => {
+  const { asPath, push } = useRouter();
+  return (
+    <MenuItem
+      _focus={{ bgColor: "brand.700" }}
+      command={symbol}
+      onClick={async () => await push(asPath, undefined, { locale: lang })}
+    >
+      {label}
+    </MenuItem>
+  );
+};
+
+const languages = [
+  {
+    lang: "ar",
+    label: "عربي",
+    symbol: "أب",
+  },
+  {
+    lang: "en",
+    label: "English",
+    symbol: "Ab",
+  },
+  {
+    lang: "fr",
+    label: "Française",
+    symbol: "Ab",
+  },
+];

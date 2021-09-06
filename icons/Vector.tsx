@@ -1,4 +1,4 @@
-export const Vector = ({ color }: { color?: string }) => (
+export const VectorIcon = ({ color }: { color?: string }) => (
   <svg
     width="40"
     height="36"

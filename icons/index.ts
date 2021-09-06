@@ -5,4 +5,4 @@ export { ArticleIcon } from "./article";
 export { SoundIcon } from "./sound";
 export { VideoIcon } from "./video";
 export { MenuIcon } from "./menu";
-export { Vector } from "./Vector";
+export { VectorIcon } from "./vector";

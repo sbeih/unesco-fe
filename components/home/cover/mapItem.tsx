@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Box, Link, Flex, Text } from "@chakra-ui/react";
-import { Vector } from "@/icons/index";
+import { VectorIcon } from "@/icons/index";
 import { FormattedMessage } from "react-intl";
 import { useRouter } from "next/router";
 
@@ -52,7 +52,7 @@ export const MapItem: React.FC<IMapItemProps> = ({
             />
           )}
           <Flex zIndex={1}>
-            <Vector color={hovered ? "white" : undefined} />
+            <VectorIcon color={hovered ? "white" : undefined} />
           </Flex>
           <Text fontSize="md" marginTop={"18px"} width="max-content">
             <FormattedMessage id={cityResourceString} />

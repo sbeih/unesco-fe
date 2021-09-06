@@ -25,6 +25,7 @@ const colors = {
     400: "#535353",
     500: "#F0F0ED",
     600: "#EEEEEE",
+    700: "#DDDDDD",
   },
 };
 
@@ -64,11 +65,6 @@ const components = {
         bgColor: "white",
         border: "1px solid #EEE",
       },
-    },
-  },
-  Link: {
-    styles: {
-      cursor: "pointer",
     },
   },
 };
