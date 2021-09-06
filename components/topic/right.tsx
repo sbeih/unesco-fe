@@ -11,7 +11,7 @@ export const Right: React.FC<IRightProps> = ({
   secondaryTitle,
   secondParagraph,
 }) => (
-  <VStack width="100%" spacing="70px" alignItems="flex-start">
+  <VStack width="100%" spacing="70px" alignItems="flex-start" mt="70px">
     <Text fontSize="xl" fontWeight="normal">
       {firstParagraph}
     </Text>
