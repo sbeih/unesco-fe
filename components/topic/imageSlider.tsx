@@ -1,25 +1,20 @@
-import { Box, Img } from "@chakra-ui/react";
-import SlickSlider from "react-slick";
+import { Flex, Img } from "@chakra-ui/react";
+import ScrollContainer from "react-indiana-drag-scroll";
 
 interface IImageSliderProps {
   images: string[];
 }
 
 export const ImageSlider: React.FC<IImageSliderProps> = ({ images }) => {
-  const settings = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    draggable: true,
-  };
   return (
-    <Box width="100%">
-      <SlickSlider {...settings}>
+    <ScrollContainer className="scroll-container" vertical={false}>
+      <Flex
+        width="100%"
+      >
         {images.map((img, i) => (
-          <Img key={i} src={img} height={["400px", "679px"]} />
+          <Img key={i} src={img} height={["400px", "679px"]} me="40px" />
         ))}
-      </SlickSlider>
-    </Box>
+      </Flex>
+    </ScrollContainer>
   );
 };

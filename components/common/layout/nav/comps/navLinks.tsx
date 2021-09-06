@@ -10,6 +10,7 @@ import {
 import NextLink from "next/link";
 import { SearchIcon } from "@/icons/index";
 import { FormattedMessage } from "react-intl";
+import{SearchModal} from "./searchModal"
 
 enum LinkType {
   Dropdown,
@@ -19,9 +20,7 @@ enum LinkType {
 export const NavLinks: React.FC = () => {
   return (
     <>
-      <Box mt={[10, 0]}>
-        <SearchIcon />
-      </Box>
+      <SearchModal/>
       {links.map((link, i) => (
         <>
           {link.type === LinkType.Dropdown ? (
