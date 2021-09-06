@@ -2,8 +2,9 @@ import * as React from "react";
 import { Box, Link, Flex, Text } from "@chakra-ui/react";
 import { Vector } from "@/icons/index";
 import { FormattedMessage } from "react-intl";
+import { useRouter } from "next/router";
 
-interface IMapItemProps {
+export interface IMapItemProps {
   cityResourceString: string;
   top: string;
   left: string;
@@ -17,12 +18,15 @@ export const MapItem: React.FC<IMapItemProps> = ({
   href,
 }) => {
   const [hovered, SetHovered] = React.useState(false);
+  const { locale } = useRouter();
+  const isRTl = locale === "ar";
+
   return (
-    <Box left={left} position="absolute" top={top}>
+    <Box insetEnd={left} position="absolute" top={top}>
       <Link href={href}>
         <Flex
           position="relative"
-          zIndex={1}
+          zIndex={3}
           flexDirection="column"
           alignItems="center"
           justifyContent="center"
@@ -42,7 +46,7 @@ export const MapItem: React.FC<IMapItemProps> = ({
               zIndex="0"
               position="absolute"
               top="-20px"
-              left="-3px"
+              insetEnd={isRTl ? "-3px" : "1px"}
               backgroundColor="black"
               borderRadius="32px"
             />
@@ -50,7 +54,7 @@ export const MapItem: React.FC<IMapItemProps> = ({
           <Flex zIndex={1}>
             <Vector color={hovered ? "white" : undefined} />
           </Flex>
-          <Text fontSize="md" marginTop={"18px"}>
+          <Text fontSize="md" marginTop={"18px"} width="max-content">
             <FormattedMessage id={cityResourceString} />
           </Text>
         </Flex>
