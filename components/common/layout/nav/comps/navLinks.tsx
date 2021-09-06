@@ -2,13 +2,12 @@ import { Link, Text, Box } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { SearchIcon } from "@/icons/index";
 import { FormattedMessage } from "react-intl";
+import{SearchModal} from "./searchModal"
 
 export const NavLinks: React.FC = () => {
   return (
     <>
-      <Box mt={[10, 0]}>
-        <SearchIcon />
-      </Box>
+      <SearchModal/>
       {links.map((link, i) => (
         <NavLink key={i} label={link.label} href={link.href} />
       ))}
