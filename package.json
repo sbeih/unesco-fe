@@ -14,7 +14,7 @@
         "@emotion/styled": "11",
         "@fontsource/almarai": "^4.5.0",
         "framer-motion": "4",
-        "next": "11.1.0",
+        "next": "^11.1.2",
         "react": "17.0.2",
         "react-dom": "17.0.2",
         "react-indiana-drag-scroll": "^2.0.1",
