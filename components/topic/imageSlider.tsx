@@ -8,11 +8,15 @@ interface IImageSliderProps {
 export const ImageSlider: React.FC<IImageSliderProps> = ({ images }) => {
   return (
     <ScrollContainer className="scroll-container" vertical={false}>
-      <Flex
-        width="100%"
-      >
+      <Flex width="100%">
         {images.map((img, i) => (
-          <Img key={i} src={img} height={["400px", "679px"]} me="40px" />
+          <Img
+            key={i}
+            src={img}
+            height={["400px", "600px"]}
+            width={["100%%", "65%"]}
+            me="47px"
+          />
         ))}
       </Flex>
     </ScrollContainer>

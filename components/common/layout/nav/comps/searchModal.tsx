@@ -31,6 +31,7 @@ export const SearchModal: React.FC = () => {
         }
       />
       <Modal
+        //@ts-ignore
         finalFocusRef={finalRef}
         isOpen={isOpen}
         onClose={onClose}

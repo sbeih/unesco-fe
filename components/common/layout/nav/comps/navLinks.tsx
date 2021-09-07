@@ -8,9 +8,8 @@ import {
   MenuList,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
-import { SearchIcon } from "@/icons/index";
 import { FormattedMessage } from "react-intl";
-import{SearchModal} from "./searchModal"
+import { SearchModal } from "./searchModal";
 
 enum LinkType {
   Dropdown,
@@ -20,7 +19,7 @@ enum LinkType {
 export const NavLinks: React.FC = () => {
   return (
     <>
-      <SearchModal/>
+      <SearchModal />
       {links.map((link, i) => (
         <>
           {link.type === LinkType.Dropdown ? (

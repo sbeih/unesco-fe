@@ -54,7 +54,7 @@ export const Cover: React.FC<ICoverProps> = ({
       <VStack
         spacing="42px"
         width="100%"
-        height="100%"
+        height={{ "2xl": "95%", md: "75%" }}
         alignItems={["center", "flex-start"]}
         justifyContent="center"
       >

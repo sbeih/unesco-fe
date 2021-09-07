@@ -11,15 +11,13 @@ interface IHeaderProps {
 export const Nav: React.FC<IHeaderProps> = ({ inverted }) => {
   const [isOpen, setIsOpen] = React.useState<boolean>();
   return (
-    <Box
-      mt={12}
-      height={["fit-content", 88]}
-      color={inverted ? "white" : "brand.100"}
-    >
+    <Box mt={12} height="fit-content" color={inverted ? "white" : "brand.100"}>
       <Flex
         direction={["column", "row"]}
         alignItems="center"
-        justifyContent="space-between"
+        flexWrap="wrap"
+        justifyContent={{ xl: "space-between", md: "center" }}
+        mb={5}
       >
         <Flex>
           <Logo inverted={inverted} />
@@ -42,6 +40,7 @@ export const Nav: React.FC<IHeaderProps> = ({ inverted }) => {
               direction={["column", "row"]}
               spacing={8}
               alignItems="center"
+              wrap="wrap"
             >
               <NavLinks />
               <LanguageSwitcher />

@@ -95,7 +95,7 @@ export const MapImage: React.FC = () => {
       insetEnd="-109px"
       height="774px"
       overflow="hidden"
-      display={["none", "block"]}
+      display={["none", "none", "none", "none", "block"]}
     >
       <TransformWrapper
         velocityAnimation={{ disabled: true }}

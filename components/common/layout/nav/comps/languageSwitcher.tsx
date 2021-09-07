@@ -12,7 +12,7 @@ export const LanguageSwitcher: React.FC = () => {
       <MenuButton as={Button} variant="white" size="md" color="brand.100">
         {currentLanguageLabel}
       </MenuButton>
-      <MenuList borderColor="brand.700">
+      <MenuList borderColor="brand.700" zIndex={2}>
         {languages.map((lang) => (
           <LanguageItem key={lang.lang} {...lang} />
         ))}
