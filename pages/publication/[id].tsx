@@ -1,7 +1,12 @@
 import type { NextPage } from "next";
 import { PageSEO } from "@/components/common/PageSEO";
 import { Box, Heading } from "@chakra-ui/react";
-import { TopicLayout, Left, Right, Top } from "@/components/topic";
+import {
+  PublicationPageLayout,
+  Left,
+  Right,
+  Top,
+} from "@/components/publication";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -46,7 +51,7 @@ const TopicPage: NextPage<ITopicPageProps> = ({
       >
         {title}
       </Heading>
-      <TopicLayout
+      <PublicationPageLayout
         top={<Top images={[image1Src, image1Src]} />}
         left={<Left cards={relatedTopics} />}
         right={

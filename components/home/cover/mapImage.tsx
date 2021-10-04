@@ -3,85 +3,85 @@ import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { IMapItemProps, MapItem } from "./mapItem";
 import { useRouter } from "next/router";
 import { GradientVerticalDivider } from "./gradientDivider";
-
+import { TAG_PAGE } from "@/common/routes";
 const mapItems: IMapItemProps[] = [
   {
     cityResourceString: "home.cover.map.Nablus",
     left: "808px",
     top: "140px",
-    href: "/city/1",
+    href: `${TAG_PAGE}/1`,
   },
   {
     cityResourceString: "home.cover.map.Jenin",
     left: "729px",
     top: "-6px",
-    href: "/city/1",
+    href: `${TAG_PAGE}/1`,
   },
   {
     cityResourceString: "home.cover.map.Tobas",
     left: "911px",
     top: "44px",
-    href: "/city/1",
+    href: `${TAG_PAGE}/1`,
   },
   {
     cityResourceString: "home.cover.map.tulkarim",
     left: "602px",
     top: "62px",
-    href: "/city/1",
+    href: `${TAG_PAGE}/1`,
   },
   {
     cityResourceString: "home.cover.map.Ramallah",
     left: "682px",
     top: "340px",
-    href: "/city/1",
+    href: `${TAG_PAGE}/1`,
   },
   {
     cityResourceString: "home.cover.map.Qalqilia",
     left: "581px",
     top: "191px",
-    href: "/city/1",
+    href: `${TAG_PAGE}/1`,
   },
   {
     cityResourceString: "home.cover.map.Salfit",
     left: "664px",
     top: "242px",
-    href: "/city/1",
+    href: `${TAG_PAGE}/1`,
   },
   {
     cityResourceString: "home.cover.map.Ariha",
     left: "878px",
     top: "317px",
-    href: "/city/1",
+    href: `${TAG_PAGE}/1`,
   },
   {
     cityResourceString: "home.cover.map.jerusalem",
     left: "736px",
     top: "445px",
-    href: "/city/1",
+    href: `${TAG_PAGE}/1`,
   },
   {
     cityResourceString: "home.cover.map.beitlahim",
     left: "784px",
     top: "561px",
-    href: "/city/1",
+    href: `${TAG_PAGE}/1`,
   },
   {
     cityResourceString: "home.cover.map.hebron",
     left: "618px",
     top: "632px",
-    href: "/city/1",
+    href: `${TAG_PAGE}/1`,
   },
   {
     cityResourceString: "home.cover.map.Gaza",
     left: "101px",
     top: "601px",
-    href: "/city/1",
+    href: `${TAG_PAGE}/1`,
   },
   {
     cityResourceString: "home.cover.map.Khan",
     left: "16px",
     top: "738px",
-    href: "/city/1",
+    href: `${TAG_PAGE}/1`,
   },
 ];
 

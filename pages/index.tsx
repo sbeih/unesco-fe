@@ -2,16 +2,23 @@ import type { NextPage } from "next";
 import { VStack } from "@chakra-ui/layout";
 import { HomeCover } from "@/components/home/";
 import { CardList } from "@/components/common/CardList";
-import { categories, ICategory } from "../mocks/home";
 import { PageSEO } from "@/components/common/PageSEO";
+import { getHydratedProps, useQuery } from "@/apis/common";
+import { getPublications } from "@/apis/queries";
+import { pubsToCategories } from "@/apis/transformers";
+import { IPublication } from "@/apis/schemas";
+import { ICategory } from "@/common/types";
 import { useIntl } from "react-intl";
 
-interface IHomeProps {
-  categories: ICategory[];
-}
+interface IHomeProps {}
 
-const Home: NextPage<IHomeProps> = ({ categories }) => {
+const Home: NextPage<IHomeProps> = ({}) => {
   const { formatMessage } = useIntl();
+  const { data: publications, transformed: categories } = useQuery<
+    IPublication[],
+    ICategory[]
+  >("home-publications", getPublications, pubsToCategories);
+
   return (
     <div>
       <PageSEO
@@ -20,12 +27,12 @@ const Home: NextPage<IHomeProps> = ({ categories }) => {
       />
       <HomeCover />
       <VStack spacing={16}>
-        {categories.map((cat, i) => (
+        {categories?.map((cat, i) => (
           <CardList
             key={i}
-            cards={cat.topics}
-            title={cat.title}
-            subtitle={cat.subtitle}
+            cards={cat.pubs}
+            title={cat.name}
+            subtitle={cat.description}
           />
         ))}
       </VStack>
@@ -34,12 +41,8 @@ const Home: NextPage<IHomeProps> = ({ categories }) => {
 };
 
 export const getStaticProps = async () => {
-  return {
-    props: {
-      // -- mocked -- //
-      categories,
-    },
-  };
+  const props = await getHydratedProps("home-publications", getPublications);
+  return props;
 };
 
 export default Home;
