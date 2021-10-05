@@ -70,7 +70,7 @@ const NavLinkDropDown: React.FC<INavLinkDropDownProps> = ({
       </MenuButton>
       <MenuList zIndex={2} borderColor="brand.700">
         {navLinks.map((link, i) => (
-          <MenuItem _focus={{ bgColor: "brand.700" }}>
+          <MenuItem key={i} _focus={{ bgColor: "brand.700" }}>
             <NavLink key={i} {...link} />
           </MenuItem>
         ))}

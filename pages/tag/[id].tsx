@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import { Box } from "@chakra-ui/react";
-import { CityCover } from "@/components/city";
+import { TagPageCover } from "@/components/tag";
 import { categories, ICategory } from "../../mocks/city";
 import { CardList } from "@/components/common/CardList";
 import { PageSEO } from "@/components/common/PageSEO";
@@ -27,7 +27,7 @@ const CityPage: NextPage<ICityPageProps> = ({
   return (
     <Box>
       <PageSEO title={cityName} description={cityDescription} />
-      <CityCover
+      <TagPageCover
         cityName={cityName}
         cityDescription={cityDescription}
         photoCount={photoCount}

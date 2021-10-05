@@ -1,5 +1,10 @@
+import * as React from "react";
 import type { AppProps } from "next/app";
 import { ChakraProvider } from "@chakra-ui/react";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
+import { Hydrate } from "react-query/hydration";
+import { AxiosProvider } from "@/apis/axiosClient";
 import { Layout } from "components/common/layout/";
 import { IntlProvider } from "react-intl";
 import { useRouter } from "next/router";
@@ -18,16 +23,24 @@ const messages: any = {
 };
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const [queryClient] = React.useState(() => new QueryClient());
   const { locale } = useRouter();
 
   return (
-    <ChakraProvider theme={customTheme(locale!)}>
-      <IntlProvider locale={locale!} messages={messages[locale!]}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </IntlProvider>
-    </ChakraProvider>
+    <AxiosProvider>
+      <QueryClientProvider client={queryClient}>
+        <Hydrate state={pageProps.dehydratedState}>
+          <ChakraProvider theme={customTheme(locale!)}>
+            <IntlProvider locale={locale!} messages={messages[locale!]}>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </IntlProvider>
+          </ChakraProvider>
+        </Hydrate>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
+    </AxiosProvider>
   );
 }
 export default MyApp;

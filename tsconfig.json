@@ -20,6 +20,8 @@
       "@/icons/*": ["icons/index.ts"],
       "@/constants/*": ["constants/*"],
       "@/translations/*": ["translations/*"],
+      "@/apis/*": ["apis/*"],
+      "@/common/*": ["common/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "icons/sound.tsx"],

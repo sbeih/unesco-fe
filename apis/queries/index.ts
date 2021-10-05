@@ -1,0 +1,1 @@
+export { getPublications } from "./publications";
