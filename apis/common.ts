@@ -19,7 +19,7 @@ export const getHydratedProps: GetHydratedProps = async (
 
   return {
     props: {
-      dehydratedState: dehydrate(queryClient),
+      dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))),
       ...otherProps,
     },
   };
@@ -32,12 +32,13 @@ type QueryResult<TData, TFData> = {
 export const useQuery = <TData, TFData = any>(
   key: any,
   callback: any,
-  transformer?: (data: TData) => TFData
+  transformer?: (data: TData) => TFData,
+  callbackParams?: any
 ) => {
   let results: QueryResult<TData, TFData>;
 
   const axiosClient = useAxiosClient();
-  const queryFunction = () => callback(axiosClient);
+  const queryFunction = () => callback(axiosClient, callbackParams);
 
   const queryResults = useReactQuery<any, any, TData>(key, queryFunction);
   results = { ...queryResults };

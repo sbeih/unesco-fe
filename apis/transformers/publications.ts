@@ -22,7 +22,7 @@ export const pubsToCategories = (pubs: IPublication[]): ICategory[] => {
         description: catPubs[0].category.description,
         pubs: catPubs.map((pub) => ({
           title: pub.title,
-          subtitle: pub.body.slice(0, 100),
+          subtitle: pub.body, // .replace(/(?:\r\n|\r|\n)/g, "<br />"),
           cityName: pub.areas[0]?.name,
           imageSrc: pub.cover?.previewUrl,
           href: `${PUBLICATION_PAGE}/${pub.id}`,

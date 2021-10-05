@@ -1,5 +1,14 @@
 import { Status, PubType, ITag, IMedia } from "./common";
 
+export type IFormattedTagValue = {
+  label: string;
+  value: number;
+};
+
+export type IFormattedTag = {
+  [key: string]: IFormattedTagValue[];
+};
+
 export interface IPublication {
   id: number;
   title: string;
@@ -8,7 +17,7 @@ export interface IPublication {
   type: PubType;
   category: ITag;
   unIdentifier: string;
-  formattedTags: ITag[];
+  formattedTags: IFormattedTag;
   locale: string;
   created_at: string;
   updated_at: string;

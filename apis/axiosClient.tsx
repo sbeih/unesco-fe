@@ -1,6 +1,6 @@
 import * as React from "react";
 import axios, { AxiosInstance } from "axios";
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE;
+const API_BASE = "https://boiling-mesa-79777.herokuapp.com/";
 
 export const getAxiosClient = () => {
   const axiosClient = axios.create({

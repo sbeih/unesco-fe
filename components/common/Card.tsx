@@ -33,9 +33,12 @@ export const Card: React.FC<ICardProps> = ({
           <Text fontSize="xl" fontWeight="bold">
             {title}
           </Text>
-          <Text fontSize="md" fontWeight="light">
-            {subtitle}
-          </Text>
+          <Text
+            fontSize="md"
+            fontWeight="light"
+            noOfLines={2}
+            dangerouslySetInnerHTML={{ __html: subtitle }}
+          />
         </VStack>
         <Link as={NextLink} href={citylink}>
           <Flex width="100%" justifyContent="flex-end" mt={14} cursor="pointer">
