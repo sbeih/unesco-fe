@@ -9,39 +9,37 @@ import {
 } from "@/components/publication";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { getPublication } from "@/apis/queries";
+import { ITopicType } from "mocks/topic";
+import { IPublication } from "@/apis/schemas";
+import { getHydratedProps, useQuery } from "@/apis/common";
+import { useRouter } from "next/router";
+import { publicationTransformer } from "@/apis/transformers/publication";
 
-import {
-  title,
-  firstParagraph,
-  secondaryTitle,
-  secondParagraph,
-  relatedTopics,
-  image1Src,
-  image2Src,
-  ITopicType,
-} from "mocks/topic";
-
-interface ITopicPageProps {
+export interface ITopicPageProps {
   title: string;
   firstParagraph: string;
-  secondaryTitle: string;
-  secondParagraph: string;
   image1Src: string;
-  image2Src: string;
-  relatedTopics: ITopicType[];
+  image2Src?: string;
+  relatedTopics?: ITopicType[];
+  secondaryTitle?: string;
+  secondParagraph?: string;
 }
 
-const TopicPage: NextPage<ITopicPageProps> = ({
-  title,
-  firstParagraph,
-  secondaryTitle,
-  secondParagraph,
-  relatedTopics,
-  image1Src,
-}) => {
+const TopicPage: NextPage<ITopicPageProps> = () => {
+  const router = useRouter();
+  const { id } = router.query;
+
+  const { data: publication, transformed } = useQuery<IPublication>(
+    ["publication", id],
+    getPublication,
+    publicationTransformer,
+    id
+  );
+
   return (
     <Box width="100%">
-      <PageSEO title={title} description={title} />
+      <PageSEO title={transformed?.title} description={transformed?.title} />
       <Heading
         as="h1"
         fontSize="3xl"
@@ -49,16 +47,20 @@ const TopicPage: NextPage<ITopicPageProps> = ({
         my="48px"
         w="fit-content"
       >
-        {title}
+        {transformed?.title}
       </Heading>
       <PublicationPageLayout
-        top={<Top images={[image1Src, image1Src]} />}
-        left={<Left cards={relatedTopics} />}
+        top={<Top images={[transformed?.image1Src, transformed?.image1Src]} />}
+        left={
+          transformed?.relatedTopics && (
+            <Left cards={transformed?.relatedTopics} />
+          )
+        }
         right={
           <Right
-            firstParagraph={firstParagraph}
-            secondaryTitle={secondaryTitle}
-            secondParagraph={secondParagraph}
+            firstParagraph={transformed?.firstParagraph}
+            // secondaryTitle={transformed?.secondaryTitle}
+            // secondParagraph={transformed?.secondParagraph}
           />
         }
       />
@@ -66,20 +68,16 @@ const TopicPage: NextPage<ITopicPageProps> = ({
   );
 };
 
-// TODO: when integrating with BE, use getStaticProps with getStaticPaths
-export const getServerSideProps = async () => {
-  return {
-    props: {
-      // -- mocked -- //
-      title,
-      firstParagraph,
-      secondaryTitle,
-      secondParagraph,
-      relatedTopics,
-      image1Src,
-      image2Src,
-    },
-  };
+export const getStaticProps = async () => {
+  const props = await getHydratedProps("publication", getPublication);
+  return props;
 };
+
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: "blocking",
+  };
+}
 
 export default TopicPage;

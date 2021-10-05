@@ -4,7 +4,12 @@ import { TagPageCover } from "@/components/tag";
 import { categories, ICategory } from "../../mocks/city";
 import { CardList } from "@/components/common/CardList";
 import { PageSEO } from "@/components/common/PageSEO";
-interface ICityPageProps {
+import { useRouter } from "next/router";
+import { getHydratedProps, useQuery } from "@/apis/common";
+import { ITag } from "@/apis/schemas";
+import { getTag } from "@/apis/queries";
+import { tagTransformer } from "@/apis/transformers";
+export interface ICityPageProps {
   cityName: string;
   cityDescription: string;
   photoCount: string;
@@ -12,31 +17,36 @@ interface ICityPageProps {
   articleCount: string;
   soundCount: string;
   cityImage: string;
-  categories: ICategory[];
+  categories?: ICategory[];
 }
 
-const CityPage: NextPage<ICityPageProps> = ({
-  cityName,
-  cityDescription,
-  photoCount,
-  videoCount,
-  articleCount,
-  soundCount,
-  categories,
-}) => {
+const CityPage: NextPage<ICityPageProps> = () => {
+  const router = useRouter();
+  const { id } = router.query;
+
+  const { data: tag, transformed } = useQuery<ITag>(
+    ["tag", id],
+    getTag,
+    tagTransformer,
+    id
+  );
+
   return (
     <Box>
-      <PageSEO title={cityName} description={cityDescription} />
+      <PageSEO
+        title={transformed?.cityName}
+        description={transformed?.cityDescription}
+      />
       <TagPageCover
-        cityName={cityName}
-        cityDescription={cityDescription}
-        photoCount={photoCount}
-        videoCount={videoCount}
-        articleCount={articleCount}
-        soundCount={soundCount}
+        cityName={transformed?.cityName}
+        cityDescription={transformed?.cityDescription}
+        photoCount={transformed?.photoCount}
+        videoCount={transformed?.videoCount}
+        articleCount={transformed?.articleCount}
+        soundCount={transformed?.soundCount}
       />
       <Box mt={[12, 7]}>
-        {categories.map((cat, i) => (
+        {categories?.map((cat, i) => (
           <CardList
             key={i}
             cards={cat.topics}
@@ -49,24 +59,16 @@ const CityPage: NextPage<ICityPageProps> = ({
   );
 };
 
-// TODO: when integrating with BE, use getStaticProps with getStaticPaths
-export const getServerSideProps = async (ctx: any) => {
-  return {
-    // -- mocked -- //
-    props: {
-      cityName: "مدينة رام الله",
-      cityDescription: `مدينة فلسطينية و مركز محافظة رام الله و البيرة. تقع في الضفة الغربية
-      إلى الشمال من القدس بحوالي 15 كم,
-      و ترتفع عن سطح البحر 880 متراً, و تبلغ مساحتها 5.16 كم2, كما بلغ عدد
-      سكانها حوالي 998,38 نسمة`,
-      photoCount: "12,039",
-      videoCount: "12,039",
-      articleCount: "12,039",
-      soundCount: "12,039",
-      categories,
-      cityImage: "/images/citycover.png",
-    },
-  };
+export const getStaticProps = async () => {
+  const props = await getHydratedProps("tag", getTag);
+  return props;
 };
+
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: "blocking",
+  };
+}
 
 export default CityPage;
